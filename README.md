@@ -8,11 +8,13 @@
 - 모든 이미지에 동일한 자르기 영역 적용
 - JPG, JPEG, PNG 등 다양한 이미지 형식 지원
 - 사용자 지정 파일 확장자 옵션
+- 명령줄(CLI) 및 그래픽 사용자 인터페이스(GUI) 모두 지원
 
 ## 필요한 환경
 
 - Python 3.6 이상
 - Pillow 라이브러리
+- tkinter (GUI 버전만 해당, 대부분의 Python 설치에 기본 포함됨)
 
 ## 설치 방법
 
@@ -24,17 +26,23 @@ cd image-crop-tool
 
 2. 필요한 라이브러리를 설치합니다:
 ```
-pip install Pillow
+pip install -r requirements.txt
 ```
 
 ## 사용 방법
+
+이 도구는 두 가지 모드로 사용할 수 있습니다:
+1. 명령줄 인터페이스 (CLI)
+2. 그래픽 사용자 인터페이스 (GUI)
+
+### 1. 명령줄 인터페이스 (CLI)
 
 기본 사용법:
 ```
 python crop_images.py 입력_폴더 출력_폴더 --left 100 --top 100 --right 500 --bottom 500
 ```
 
-### 매개변수 설명:
+#### 매개변수 설명:
 
 - `입력_폴더`: 원본 이미지가 있는 폴더 경로
 - `출력_폴더`: 잘린 이미지를 저장할 폴더 경로
@@ -44,7 +52,7 @@ python crop_images.py 입력_폴더 출력_폴더 --left 100 --top 100 --right 5
 - `--bottom`: 자르기 영역의 아래쪽 좌표 (픽셀)
 - `--extensions`: (선택사항) 처리할 파일 확장자 목록 (기본값: .jpg .jpeg .png)
 
-### 예제
+#### 예제:
 
 1. 모든 이미지를 (100,100)에서 (500,500) 영역으로 자르기:
 ```
@@ -55,6 +63,25 @@ python crop_images.py 사진들 잘린_사진들 --left 100 --top 100 --right 50
 ```
 python crop_images.py 사진들 잘린_사진들 --left 100 --top 100 --right 500 --bottom 500 --extensions .png
 ```
+
+### 2. 그래픽 사용자 인터페이스 (GUI)
+
+GUI 모드를 사용하면 이미지를 미리 보면서 자르기 영역을 설정할 수 있습니다.
+
+GUI 모드 실행:
+```
+python crop_gui.py
+```
+
+#### GUI 사용 방법:
+
+1. "입력 폴더" 버튼을 클릭하여 처리할 이미지가 있는 폴더를 선택합니다.
+2. "출력 폴더" 버튼을 클릭하여 잘린 이미지를 저장할 폴더를 선택합니다.
+3. 이미지 목록에서 이미지를 선택하여 미리 볼 수 있습니다.
+4. 자르기 영역 좌표를 입력하고 "미리보기 적용" 버튼을 클릭하여 자르기 영역을 확인합니다.
+5. "이미지 자르기 시작" 버튼을 클릭하여 처리를 시작합니다.
+
+![GUI 화면](https://raw.githubusercontent.com/huiriric/image-crop-tool/main/gui_screenshot.png)
 
 ## 이미지 자르기 영역 이해하기
 
@@ -72,7 +99,7 @@ python crop_images.py 사진들 잘린_사진들 --left 100 --top 100 --right 50
 
 를 기준으로 하는 400x400 픽셀 크기의 정사각형 영역을 자릅니다.
 
-![이미지 자르기 설명](https://raw.githubusercontent.com/huiriric/image-crop-tool/main/crop_diagram.png)
+![이미지 자르기 설명](https://raw.githubusercontent.com/huiriric/image-crop-tool/main/crop_diagram.svg)
 
 ## 주의사항
 
