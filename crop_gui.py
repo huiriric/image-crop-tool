@@ -82,8 +82,9 @@ class ImageCropperGUI:
         ttk.Button(coords_frame, text="미리보기 적용", command=self.update_preview).grid(row=0, column=4, rowspan=2, padx=(10, 0), pady=5)
         
         # 우측 패널 (폴더 선택 및 처리)
-        right_panel = ttk.Frame(main_frame)
-        right_panel.pack(side=tk.RIGHT, fill=tk.BOTH, width=250, padx=(5, 0))
+        right_panel = ttk.Frame(main_frame, width=250)
+        right_panel.pack(side=tk.RIGHT, fill=tk.BOTH, padx=(5, 0))
+        right_panel.pack_propagate(0)  # 고정 너비 유지를 위한 설정
         
         # 입력 폴더 선택
         input_frame = ttk.LabelFrame(right_panel, text="입력 폴더")
